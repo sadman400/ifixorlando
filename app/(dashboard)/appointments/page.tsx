@@ -30,6 +30,24 @@ function ChevronRightIcon({ className }: IconProps) {
   );
 }
 
+function PlusIcon({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M12 5v14" />
+      <path d="M5 12h14" />
+    </svg>
+  );
+}
+
 function CalendarEmptyIcon({ className }: IconProps) {
   return (
     <svg
@@ -218,9 +236,18 @@ export default function AppointmentsPage() {
   return (
     <section className="space-y-5">
       <div>
-        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-500">
-          Appointments
-        </p>
+        <div className="flex items-center justify-between">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-gray-500">
+            Appointments
+          </p>
+          <Link
+            href="/appointments/new"
+            className="inline-flex items-center gap-1 rounded bg-teal-600 px-3 py-1.5 text-[12px] font-semibold text-white transition hover:bg-teal-700 active:scale-[0.98]"
+          >
+            <PlusIcon className="h-3.5 w-3.5" />
+            <span>New</span>
+          </Link>
+        </div>
         <div className="mt-1 flex items-end justify-between gap-3">
           <h2 className="text-[26px] font-bold tracking-tight text-gray-900">
             Upcoming
@@ -250,6 +277,13 @@ export default function AppointmentsPage() {
           <p className="mt-1 text-[13px] text-gray-500">
             No upcoming appointments remain for the current month.
           </p>
+          <Link
+            href="/appointments/new"
+            className="mt-5 inline-flex items-center gap-1 rounded bg-teal-600 px-4 py-2 text-[13px] font-semibold text-white transition hover:bg-teal-700 active:scale-[0.98]"
+          >
+            <PlusIcon className="h-3.5 w-3.5" />
+            <span>New Appointment</span>
+          </Link>
         </div>
       ) : (
         <div className="space-y-6">
